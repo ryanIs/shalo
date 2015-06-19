@@ -5,20 +5,32 @@
 
 	public class Main extends MovieClip
 	{
-		public var LOAD_COMPLETE:Boolean = false;
-		public var transition_frame:String = "load";
+		// CONFIG VARS
+		public var LOAD_COMPLETE:Boolean = true;
 		private const DEBUG:Boolean = true;
-
+		private var debugFrame:String = "title";
+		
+		public var transition_frame:String = "load";
 
 		public function Main()
 		{
 			//The main
+			stop();
 			CoreAccessor.setMain(this);
-			if(!LOAD_COMPLETE) {
+			if(LOAD_COMPLETE == false) {
 				bar_mc.bar_mc.scaleX = 0;
 				loaderInfo.addEventListener(ProgressEvent.PROGRESS, loadHandler);
+			} else {
+				gotoAndPlay(2);
 			}
-			stop();
+		}
+		public function loadFrame():void {
+			if(currentLabel == "debugLoad") {
+				if(DEBUG) {
+					gotoAndStop(debugFrame);
+				}
+			}
+			return;
 		}
 		public function trans(to_frame:String):void {
 			transition_frame = to_frame;
@@ -35,13 +47,14 @@
 				LOAD_COMPLETE = true;
 				if(DEBUG)
 				{
-					setDriver(Constants.CAMPAIGN_MODE);
-					gotoAndStop("game");//is this right????
-					CoreAccessor.getDriver().run();
+					///setDriver(Constants.CAMPAIGN_MODE);
+					//gotoAndStop("game");//is this right????
+					//CoreAccessor.getDriver().run();
+					gotoAndPlay(2);
 				}
 				else
 				{
-					play();
+					gotoAndPlay(2);
 				}
 			}
 			return;
