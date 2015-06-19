@@ -1,4 +1,4 @@
-package src
+package bin
 {
 	import flash.display.MovieClip;
 
@@ -17,7 +17,7 @@ package src
 		/*
 			obtains a new zone to be rendered
 			presetZoneNumber : a predetermined zoneNumber, if just logging in, or switch zones
-			zoneArea : the representation of what zone we are in 'Ixel Forest', 'Town', 'dark cavern'
+			zoneArea : the representation of what zone we are in 'Ixel Forest', 'Town XYZ', 'dark cavern'
 			currentZoneNumber : the current zone we are in represented as a number
 			direction : the direction we are travelling represented as a number (this could be N S E W or into buildings or anyother area of travel)
 		*/
@@ -122,8 +122,6 @@ package src
 
 
 			}
-
-			
 
 			//create the zone
 			zone = new Zone(zoneTitle, visuLocation, charLocation);

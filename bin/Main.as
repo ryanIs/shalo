@@ -1,4 +1,4 @@
-﻿package src
+﻿package bin
 {
 	import flash.display.*;
 	import flash.events.*;
@@ -36,6 +36,7 @@
 				if(DEBUG)
 				{
 					setDriver(Constants.CAMPAIGN_MODE);
+					gotoAndStop("game");//is this right????
 					CoreAccessor.getDriver().run();
 				}
 				else
