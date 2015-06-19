@@ -8,7 +8,7 @@ package src
 	*/
 	public class ZoneVisualBank
 	{
-		static const test_zone_2:Array = [
+		static const IXEL_FIELDS_ROADS_END:Array = [
 			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
 			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
 			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
@@ -16,6 +16,16 @@ package src
 			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
 			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
 			[new SimpleFenceUpRight(), new SimpleFenceLeftRight(), new SimpleFenceLeftRight(), new SimpleFenceLeftRight(), new SimpleFenceLeftRight(), new SimpleFenceLeftRight(), new SimpleFenceLeftRight(), new SimpleFenceLeftRight(),new SimpleFenceUpLeft()],
+		];
+
+		static const IXEL_FIELDS_PATH_0:Array = [
+			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
+			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
+			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
+			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
+			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
+			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
+			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
 		];
 	}
 }
