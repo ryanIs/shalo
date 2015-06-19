@@ -7,5 +7,7 @@ package src
 	{
 		static const NUMBER_OF_TILES_X:Number = 9;
 		static const NUMBER_OF_TILES_Y:Number = 7;  
+		static const CAMPAIGN_MODE:Number = 0;  
+		static const ONLINE_MODE:Number = 1;  
 	}
 }
