@@ -13,7 +13,7 @@
 
 		public static function setMain(main:MovieClip):void
 		{
-			CoreAccessors.main = main;
+			CoreAccessor.main = main;
 		}
 
 		public static function getMain():MovieClip
@@ -21,9 +21,9 @@
 			return main;
 		}
 
-		public static function setDriver(main:MovieClip):void
+		public static function setDriver(driver:Driver):void
 		{
-			CoreAccessors.driver = driver;
+			CoreAccessor.driver = driver;
 		}
 
 		public static function getDriver():Driver

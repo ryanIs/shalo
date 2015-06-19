@@ -35,7 +35,8 @@
 				LOAD_COMPLETE = true;
 				if(DEBUG)
 				{
-					selectDriver(Constants.CAMPAIGN_MODE);
+					setDriver(Constants.CAMPAIGN_MODE);
+					CoreAccessor.getDriver().run();
 				}
 				else
 				{
@@ -48,17 +49,21 @@
 		/*
 			Selects the operating class to control the games functionality
 		*/
-		private function selectDriver(driver:Number)
+		private function setDriver(driver:Number)
 		{
 			switch(driver)
 			{
 				case Constants.CAMPAIGN_MODE:
 					CoreAccessor.setDriver(new CampaignDriver());
 				break;
+				/*
 				case Conastants.ONLINE_MODE:
 					CoreAccessor.setDriver(new OnlineDriver());
-
 				break;
+				case Conastants.CHALLENGE_MODE:
+					CoreAccessor.setDriver(new ChallengeDriver());
+				break;
+				*/
 			}
 		}
 	}
