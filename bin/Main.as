@@ -8,7 +8,7 @@
 		// CONFIG VARS
 		public var LOAD_COMPLETE:Boolean = true;
 		private const DEBUG:Boolean = true;
-		private var debugFrame:String = "title";
+		private var debugFrame:String = "game";
 		
 		public var transition_frame:String = "load";
 
@@ -28,6 +28,8 @@
 			if(currentLabel == "debugLoad") {
 				if(DEBUG) {
 					gotoAndStop(debugFrame);
+					setDriver(Constants.CAMPAIGN_MODE);
+					CoreAccessor.getDriver().run();
 				}
 			}
 			return;
@@ -47,9 +49,6 @@
 				LOAD_COMPLETE = true;
 				if(DEBUG)
 				{
-					///setDriver(Constants.CAMPAIGN_MODE);
-					//gotoAndStop("game");//is this right????
-					//CoreAccessor.getDriver().run();
 					gotoAndPlay(2);
 				}
 				else
