@@ -1,4 +1,4 @@
-package bin
+﻿package bin
 {
 	import flash.display.MovieClip;
 
@@ -92,8 +92,8 @@ package bin
 			*/
 			for(i = 0; i < Constants.NUMBER_OF_TILES_X; i++)
 			{
-				visuLocation.push(new Array());
-				charLocation.push(new Array());
+				visuLocation.push(new Array(Constants.NUMBER_OF_TILES_Y));
+				charLocation.push(new Array(Constants.NUMBER_OF_TILES_Y));
 			}
 
 			/*

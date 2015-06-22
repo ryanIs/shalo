@@ -1,4 +1,4 @@
-package bin.actors
+﻿package bin.actors
 {
 	import bin.*;
 	import flash.events.KeyboardEvent;
@@ -24,7 +24,7 @@ package bin.actors
 			"down" : false,
 			"left" : false,
 			"right" : false
-		}
+		};
 
 		public function HeroMover(classType:Number)
 		{
@@ -59,19 +59,19 @@ package bin.actors
 
 				if(keyPressed == controls["up"])
 				{
-					mc.y -= movementSpeed;
+					initMove(0);
 				}
 				else if(keyPressed == controls["down"])
 				{
-					mc.y += movementSpeed;
+					initMove(2);
 				}
 				else if(keyPressed == controls["left"])
 				{
-					mc.x -= movementSpeed;
+					initMove(3);
 				}
 				else if(keyPressed == controls["right"])
 				{
-					mc.x += movementSpeed;
+					initMove(1);
 				}
 			}
 		}

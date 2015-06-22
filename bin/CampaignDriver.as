@@ -1,4 +1,4 @@
-package bin
+﻿package bin
 {
 	import bin.actors.*;
 	import flash.utils.setTimeout;
@@ -24,7 +24,7 @@ package bin
 			zone.load();
 
 			hero = new Hero(Constants.CLASS_FIGHTER);
-			hero.spawn(300, 300);
+			hero.spawn(4, 4);
 
 
 		}
