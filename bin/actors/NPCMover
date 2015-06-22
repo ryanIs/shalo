@@ -1,0 +1,11 @@
+package bin.actors
+{
+	import bin.*;
+	import flash.events.KeyboardEvent;
+	import flash.utils.setTimeout;
+
+	public class NPCMover
+	{
+		public function NPCMover(){}
+	}
+}

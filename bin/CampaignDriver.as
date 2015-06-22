@@ -24,7 +24,7 @@
 			zone.load();
 
 			hero = new Hero(Constants.CLASS_FIGHTER);
-			hero.spawn(4, 4);
+			hero.spawn(2, 2);
 
 
 		}

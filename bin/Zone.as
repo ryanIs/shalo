@@ -68,8 +68,8 @@ package bin
 		*/
 		public function load()
 		{
-			var tileWidth:Number = 900 / Constants.NUMBER_OF_TILES_X;
-			var tileHeight:Number = 650 / Constants.NUMBER_OF_TILES_Y;
+			var tileWidth:Number = CoreAccessor.getMain().stage.stageWidth / Constants.NUMBER_OF_TILES_X;
+			var tileHeight:Number = CoreAccessor.getMain().stage.stageHeight / Constants.NUMBER_OF_TILES_Y;
 			var tile:MovieClip;
 
 			/*

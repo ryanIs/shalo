@@ -17,8 +17,10 @@
 		protected var frozen:Boolean = false;
 
 		protected var MOVEMENT_TIME_ONE_BLOCK:Number = 10; // FPS = 30
-		protected var movementSpeed:Number = 4;
-		protected var movementSpeedOneBlock:Number = 70 / MOVEMENT_TIME_ONE_BLOCK;
+		protected var tileWidth:Number = Math.floor(CoreAccessor.getMain().stage.stageWidth / Constants.NUMBER_OF_TILES_X);
+		protected var tileHeight:Number = (CoreAccessor.getMain().stage.stageHeight / Constants.NUMBER_OF_TILES_Y);
+		protected var movementSpeedOneBlockX:Number =  tileWidth / MOVEMENT_TIME_ONE_BLOCK;
+		protected var movementSpeedOneBlockY:Number = tileHeight / MOVEMENT_TIME_ONE_BLOCK;
 		private var movementTimer:Number = 0;
 
 		public function Mover(classType:Number)
@@ -26,37 +28,39 @@
 			determineModel(classType);
 			mc.addEventListener(Event.ENTER_FRAME, enterFrameHandler);
 		}
+
 		private function enterFrameHandler(e:Event)
 		{
 			if(inMove) 
 			{
+				if(movementTimer++ >= MOVEMENT_TIME_ONE_BLOCK) 
+				{
+					//setCoordinates(locNew[0], locNew[1]);
+					inMove = false;
+					movementTimer = 0;
+					return;
+				}
 				if(moveDirection == 0)
 				{
-					mc.y -= movementSpeedOneBlock;
+					mc.y -= movementSpeedOneBlockY;
 				}
 				else if(moveDirection == 1)
 				{
-					mc.x += movementSpeedOneBlock;
+					mc.x += movementSpeedOneBlockX;
 				}
 				else if(moveDirection == 2)
 				{
-					mc.y += movementSpeedOneBlock;
+					mc.y += movementSpeedOneBlockY;
 				}
 				else if(moveDirection == 3)
 				{
-					mc.x -= movementSpeedOneBlock;
-				}
-				if(movementTimer++ >= MOVEMENT_TIME_ONE_BLOCK) 
-				{
-					setCoordinates(locNew[0], locNew[1]);
-					inMove = false;
-					movementTimer = 0;
+					mc.x -= movementSpeedOneBlockX;
 				}
 			}
 		}
 
 		/*
-			Loads the visual for the mover based on the model number (check Constants.as)
+			
 		*/
 		protected function initMove(_direction:Number):void 
 		{
@@ -74,6 +78,10 @@
 			}
 			return;
 		}
+
+		/*
+			Loads the visual for the mover based on the model number (check Constants.as)
+		*/
 		private function determineModel(modelNumber:Number):void
 		{
 			switch(modelNumber)
@@ -100,8 +108,8 @@
 		{
 			locX = x;
 			locY = y;
-			mc.x = (locX * 70) + 35;
-			mc.y = (locY * 70) + 35;
+			mc.x = (locX * tileWidth) + (tileWidth/2);
+			mc.y = (locY * tileHeight) + (tileHeight/2);
 		}
 
 		/*
@@ -119,6 +127,11 @@
 		{
 			this.frozen = frozen;
 		}
+
+
+
+		
+
 
 	}
 }

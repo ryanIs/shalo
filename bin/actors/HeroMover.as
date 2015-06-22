@@ -2,6 +2,7 @@
 {
 	import bin.*;
 	import flash.events.KeyboardEvent;
+	import flash.utils.setTimeout;
 
 
 	/*
@@ -9,6 +10,9 @@
 	*/
 	public class HeroMover extends Mover
 	{
+
+		//for key hold checker
+		private var moveDown:uint;
 
 		//hot keys for controls
 		private var controls:Object = {
@@ -37,7 +41,8 @@
 		*/
 		public function initiateFreeRoamControls():void
 		{
-			CoreAccessor.getMain().stage.addEventListener(KeyboardEvent.KEY_DOWN, keyPressEvent);
+			CoreAccessor.getMain().stage.addEventListener(KeyboardEvent.KEY_DOWN, keyPressDownEvent);
+			CoreAccessor.getMain().stage.addEventListener(KeyboardEvent.KEY_DOWN, keyPressUpEvent);
 		}
 
 		/*
@@ -45,13 +50,40 @@
 		*/
 		public function haltFreeRoamControls():void
 		{
-			CoreAccessor.getMain().stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyPressEvent);
+			CoreAccessor.getMain().stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyPressDownEvent);
+			CoreAccessor.getMain().stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyPressUpEvent);
+		}
+
+		/*
+			key pressed up event
+		*/
+		private function keyPressUpEvent(e:KeyboardEvent)
+		{
+			const keyPressed:Number = e.keyCode;
+
+			if(keyPressed == controls["up"])
+			{
+				activeDirection["up"] = false;
+			}
+			else if(keyPressed == controls["down"])
+			{
+				activeDirection["down"] = false;
+			}
+			else if(keyPressed == controls["left"])
+			{
+				activeDirection["left"] = false;
+			}
+			else if(keyPressed == controls["right"])
+			{
+				activeDirection["right"] = false;
+			}
+
 		}
 
 		/*
 			key pressed event
 		*/
-		private function keyPressEvent(e:KeyboardEvent)
+		private function keyPressDownEvent(e:KeyboardEvent)
 		{
 			if(!getFrozen())//should remove this check
 			{
@@ -60,18 +92,23 @@
 				if(keyPressed == controls["up"])
 				{
 					initMove(0);
+					activeDirection["up"] = true;
+
 				}
 				else if(keyPressed == controls["down"])
 				{
 					initMove(2);
+					activeDirection["down"] = true;
 				}
 				else if(keyPressed == controls["left"])
 				{
 					initMove(3);
+					activeDirection["left"] = true;
 				}
 				else if(keyPressed == controls["right"])
 				{
 					initMove(1);
+					activeDirection["right"] = true;
 				}
 			}
 		}
