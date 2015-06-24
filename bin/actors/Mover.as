@@ -61,21 +61,53 @@
 		}
 
 		/*
-			
+			Initiate character movement
 		*/
 		protected function initMove(_direction:Number):void 
 		{
+			var tempX:Number;
+			var tempY:Number;
+			if(_direction == 0)
+			{
+				tempY = locY - 1;
+				tempX = locX;	
+			} 
+			else if(_direction == 1)
+			{ 
+				tempX = locX + 1; 
+				tempY = locY;
+			}
+			else if(_direction == 2)
+			{ 
+				tempY = locY + 1; 
+				tempX = locX;
+			}
+			else if(_direction == 3)
+			{ 
+				tempX = locX - 1; 
+				tempY = locY;
+			}
+
+			var campaignDriver:CampaignDriver = CoreAccessor.getDriver() as CampaignDriver;
+
 			if(!inMove) 
 			{
-				locNew = [locX, locY];
-				moveDirection = _direction;
-				inMove = true;
-				mc.rotation = 90 * _direction;
-				inMove = true;
-				if(_direction == 0) locNew[1] = locY - 1;
-				else if(_direction == 1) locNew[0] = locX + 1;
-				else if(_direction == 2) locNew[1] = locY + 1;
-				else if(_direction == 3) locNew[0] = locX - 1;
+				if(campaignDriver.getZone().moveHero(
+						campaignDriver.getHero(),
+						tempX, 
+						tempY
+					))
+				{
+					locNew = [locX, locY];
+					moveDirection = _direction;
+					inMove = true;
+					mc.rotation = 90 * _direction;
+					inMove = true;
+					if(_direction == 0) locNew[1] = locY - 1;
+					else if(_direction == 1) locNew[0] = locX + 1;
+					else if(_direction == 2) locNew[1] = locY + 1;
+					else if(_direction == 3) locNew[0] = locX - 1;
+				}
 			}
 			return;
 		}
@@ -97,13 +129,10 @@
 		} 
 
 		/*
-			Add to stage
+			Other Mover variables
 		*/
-		public function spawn(x:Number, y:Number, args:Object = null):void
+		protected function setDisplayArgs(args:Object):void
 		{
-			CoreAccessor.getMain().addChild(mc);
-			setCoordinates(x, y);
-
 			if(args != null)
 			{
 				if(args["direction"])
@@ -113,6 +142,23 @@
 			}
 		}
 
+		/*
+			Add to stage
+		*/
+		public function spawn(x:Number, y:Number, args:Object = null):void
+		{
+			setCoordinates(x, y);
+			setDisplayArgs(args);
+			appear();
+		}
+
+		/*
+			Appear
+		*/
+		public function appear():void
+		{
+			CoreAccessor.getMain().addChild(mc);
+		}
 
 		/*
 			Move visual to this position
@@ -142,6 +188,25 @@
 		}
 
 
+		public function getLocY():Number
+		{
+			return locY;
+		}
+		
+		public function setLocY(locY:Number):void
+		{
+			this.locY = locY;
+		}
+
+		public function getLocX():Number
+		{
+			return locX;
+		}
+		
+		public function setLocX(locX:Number):void
+		{
+			this.locX = locX;
+		}
 
 		
 

@@ -5,16 +5,14 @@ package bin.actors
 	import flash.utils.setTimeout;
 
 	/*
-		Represents a Non-player non hostile character
+		Represents a Non-player character
 	*/
 	public class NPCMover extends Mover
 	{
-		public function NPCMover(classType:Number)
+		public function NPCMover(classType:Number, args:Object = null)
 		{
 			super(classType);
+			setDisplayArgs(args);
 		}
-
-
-
 	}
 }

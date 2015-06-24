@@ -19,15 +19,25 @@
 		*/	
 		override public function run()
 		{
+
+			hero = new Hero(Constants.CLASS_FIGHTER);
 			var presetZoneNumber:Number = 0;
 			zone = (ZoneFactory.getZone(presetZoneNumber));
 			zone.load();
-
-			hero = new Hero(Constants.CLASS_FIGHTER);
-			hero.spawn(2, 2);
+			zone.addHero(hero, 2, 2);
 
 
+		}
 
+
+		public function getZone():Zone
+		{
+			return zone;
+		}
+
+		public function getHero():Hero
+		{
+			return hero;
 		}
 
 

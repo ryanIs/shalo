@@ -43,6 +43,42 @@ package bin
 		}
 
 		/*
+			A unit requests a move, if it can move it return true, otherwise return false
+		*/
+		public function moveHero(hero:Hero, xSquare:Number, ySquare:Number):Boolean
+		{
+			var oldX:Number = hero.getMover().getLocX();
+			var oldY:Number = hero.getMover().getLocY();
+
+			if(collidableTile(xSquare, ySquare))
+			{
+				charLocation[xSquare][ySquare] = hero;
+				charLocation[oldX][oldY] = null;
+				return true;
+			}
+
+			return false;
+		}
+
+		/*
+			Determines if this tile is collidable
+		*/
+		public function collidableTile(xSquare:Number, ySquare:Number):Boolean
+		{
+			var tile:Tile = visuLocation[ySquare][xSquare];
+			return tile.getCollidable();
+		}
+
+		/*
+			Add our hero to the zone, ASSUMING THE SLOT THE HERO IS ON IS FREE
+		*/
+		public function addHero(hero:Hero, xSquare:Number, ySquare:Number):void
+		{
+			charLocation[xSquare][ySquare] = hero;
+			hero.spawn(xSquare, ySquare);
+		}
+
+		/*
 			Clear current zone information
 		*/
 		public function clear():void
@@ -71,7 +107,7 @@ package bin
 		{
 			var tileWidth:Number = CoreAccessor.getMain().stage.stageWidth / Constants.NUMBER_OF_TILES_X;
 			var tileHeight:Number = CoreAccessor.getMain().stage.stageHeight / Constants.NUMBER_OF_TILES_Y;
-			var tile:MovieClip;
+			var tile:Tile;
 			var character:NPC;
 
 			/*
@@ -89,16 +125,26 @@ package bin
 					CoreAccessor.getMain().addChild(tile);
 				}
 			}
+		
 
 			/*
 				Place each character on its designated tile
 			*/
 			for(var i:Number = 0; i < charLocation.length; i++)
 			{
-				var characterSet:Array = charLocation[i];
-				character = new NPC(characterSet[0]);
-				character.spawn(characterSet[1], characterSet[2], {"direction" : characterSet[3]} );
+				for(var j:Number = 0; j < charLocation[i].length; j++)
+				{
+					if(charLocation[i][j] != null)
+					{
+						if(charLocation[i][j] is NPC)
+						{
+							var npc:NPC = charLocation[i][j];
+							npc.spawn(j, i);
+						}
+					}
+				}
 			}
+
 		}
 
 		public function getVisuLocation():Array

@@ -10,9 +10,6 @@ package bin.actors
 		private var battleStatistic:BattleStatistic;
 		private var mover:HeroMover;
 
-		/*
-			Initiate all hero data
-		*/
 		public function Hero(classType:Number)
 		{
 			mover = new HeroMover(classType);
@@ -25,6 +22,12 @@ package bin.actors
 		public function spawn(x:Number, y:Number):void
 		{
 			mover.spawn(x, y);
+		}
+
+
+		public function getMover():HeroMover
+		{
+			return mover;
 		}
 
 	}

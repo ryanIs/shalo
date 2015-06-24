@@ -27,5 +27,6 @@ package bin
 			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
 			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
 		];
+	
 	}
 }

@@ -23,5 +23,9 @@ package bin
 		public static const DIRECTION_RIGHT:Number = 1;
 		public static const DIRECTION_DOWN:Number = 2;
 		public static const DIRECTION_LEFT:Number = 3;
+
+
+		//non-collidable tiles
+		public static const NON_COLLIDABLE_TILES:Array = [SimpleRock, SimpleFenceUpRight, SimpleFenceUpDown, SimpleFenceLeftRight];
 	}
 }
