@@ -1,7 +1,8 @@
 package bin
 {
 	import flash.display.MovieClip;
-
+	import bin.actors.*;
+	
 	/*
 		Represents both all players, NPCS, enemies, and the visual tiles they stand on
 	*/
@@ -71,6 +72,7 @@ package bin
 			var tileWidth:Number = CoreAccessor.getMain().stage.stageWidth / Constants.NUMBER_OF_TILES_X;
 			var tileHeight:Number = CoreAccessor.getMain().stage.stageHeight / Constants.NUMBER_OF_TILES_Y;
 			var tile:MovieClip;
+			var character:NPC;
 
 			/*
 				Place each tile at it's designated location and add them to the root
@@ -86,6 +88,16 @@ package bin
 					tile.height = tileHeight;
 					CoreAccessor.getMain().addChild(tile);
 				}
+			}
+
+			/*
+				Place each character on its designated tile
+			*/
+			for(var i:Number = 0; i < charLocation.length; i++)
+			{
+				var characterSet:Array = charLocation[i];
+				character = new NPC(characterSet[0]);
+				character.spawn(characterSet[1], characterSet[2], {"direction" : characterSet[3]} );
 			}
 		}
 

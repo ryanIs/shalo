@@ -104,10 +104,12 @@
 				case 0:
 					zoneTitle = "Ixel Fields Roads End";
 					visuLocation = ZoneVisualBank.IXEL_FIELDS_ROADS_END;
+					charLocation = ZoneCharacterBank.IXEL_FIELDS_ROADS_END;
 				break;
 				case 1:
 					zoneTitle = "Ixel Fields Path";
 					visuLocation = ZoneVisualBank.IXEL_FIELDS_PATH_0;
+					charLocation = [];
 				break;
 
 

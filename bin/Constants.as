@@ -16,11 +16,12 @@ package bin
 
 		//classes/model number
 		public static const CLASS_FIGHTER:Number = 0;
-		public static const CLASS_MAGE:Number = 1;
-		public static const CLASS_ARCHER:Number = 2;
-		public static const CLASS_SNIPER:Number = 3;
-		public static const CLASS_ROGUE:Number = 4;
-		public static const CLASS_RAT:Number = 5;
-		public static const CLASS_GOBLIN:Number = 6;
+		public static const CLASS_COMMONER:Number = 1;
+
+		//directions
+		public static const DIRECTION_UP:Number = 0;
+		public static const DIRECTION_RIGHT:Number = 1;
+		public static const DIRECTION_DOWN:Number = 2;
+		public static const DIRECTION_LEFT:Number = 3;
 	}
 }

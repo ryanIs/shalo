@@ -90,17 +90,29 @@
 				case Constants.CLASS_FIGHTER:
 					mc = new FighterClassVisual();
 				break;
+				case Constants.CLASS_COMMONER:
+					mc = new CommonerClassVisual();
+				break;
 			}
 		} 
 
 		/*
 			Add to stage
 		*/
-		public function spawn(x:Number, y:Number):void
+		public function spawn(x:Number, y:Number, args:Object = null):void
 		{
 			CoreAccessor.getMain().addChild(mc);
 			setCoordinates(x, y);
+
+			if(args != null)
+			{
+				if(args["direction"])
+				{
+					mc.rotation = 90 * args["direction"];
+				}
+			}
 		}
+
 
 		/*
 			Move visual to this position
