@@ -83,6 +83,7 @@
 			var zone:Zone;
 			var visuLocation:Array = [];
 			var charLocation:Array = [];
+			var endPoints:Array = [];
 			var i:Number;
 			var j:Number;
 			var zoneTitle:String;
@@ -105,11 +106,32 @@
 					zoneTitle = "Ixel Fields Roads End";
 					visuLocation = ZoneVisualBank.IXEL_FIELDS_ROADS_END;
 					charLocation = ZoneCharacterBank.IXEL_FIELDS_ROADS_END;
+
+					endPoints = [ 
+							[1, -1, IXEL_FIELDS_PATH_0, [1, 6]], 
+							[2, -1, IXEL_FIELDS_PATH_0, [2, 6]], 
+							[3, -1, IXEL_FIELDS_PATH_0, [3, 6]], 
+							[4, -1, IXEL_FIELDS_PATH_0, [4, 6]], 
+							[5, -1, IXEL_FIELDS_PATH_0, [5, 6]], 
+							[6, -1, IXEL_FIELDS_PATH_0, [6, 6]], 
+							[7, -1, IXEL_FIELDS_PATH_0, [7, 6]]
+					];
+
 				break;
 				case 1:
 					zoneTitle = "Ixel Fields Path";
 					visuLocation = ZoneVisualBank.IXEL_FIELDS_PATH_0;
-					charLocation = [];
+					charLocation = ZoneCharacterBank.IXEL_FIELDS_PATH_0;
+					endPoints = [
+						
+							[1, 7, IXEL_FIELDS_ROADS_END, [1, 0]], 
+							[2, 7, IXEL_FIELDS_ROADS_END, [2, 0]], 
+							[3, 7, IXEL_FIELDS_ROADS_END, [3, 0]], 
+							[4, 7, IXEL_FIELDS_ROADS_END, [4, 0]], 
+							[5, 7, IXEL_FIELDS_ROADS_END, [5, 0]], 
+							[6, 7, IXEL_FIELDS_ROADS_END, [6, 0]], 
+							[7, 7, IXEL_FIELDS_ROADS_END, [7, 0]]
+					];
 				break;
 
 
@@ -126,7 +148,7 @@
 			}
 
 			//create the zone
-			zone = new Zone(zoneTitle, visuLocation, charLocation);
+			zone = new Zone(zoneTitle, visuLocation, charLocation, endPoints);
 
 			return zone;
 		}

@@ -14,5 +14,6 @@ package bin.actors
 			super(classType);
 			setDisplayArgs(args);
 		}
+
 	}
 }

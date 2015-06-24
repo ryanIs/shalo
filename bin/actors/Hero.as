@@ -1,6 +1,7 @@
 package bin.actors
 {
 	import bin.combat_statistics.*;
+	import flash.display.MovieClip;
 
 	/*
 		Represents the user class that will be controlled
@@ -24,10 +25,22 @@ package bin.actors
 			mover.spawn(x, y);
 		}
 
+		/*
+			Move hero to this location
+		*/
+		public function setCoordinates(xSquare:Number, ySquare:Number):void
+		{
+			mover.setCoordinates(xSquare, ySquare);
+		}
 
 		public function getMover():HeroMover
 		{
 			return mover;
+		}
+
+		public function getMC():MovieClip
+		{
+			return mover.getMC();
 		}
 
 	}

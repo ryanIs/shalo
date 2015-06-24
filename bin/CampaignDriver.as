@@ -30,6 +30,21 @@
 		}
 
 
+		/*
+			Transition between zones
+		*/
+		public function zoneTransition(nextZoneIdentificationNumber:Number, heroLocation:Array):void
+		{
+			zone.clear();
+
+			zone = ZoneFactory.getZone(nextZoneIdentificationNumber);
+			
+			zone.load();
+
+			zone.moveHeroTo(hero, heroLocation[0], heroLocation[1]);
+		}
+
+
 		public function getZone():Zone
 		{
 			return zone;

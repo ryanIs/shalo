@@ -1,6 +1,7 @@
 package bin.actors
 {
 	import bin.combat_statistics.*;
+	import flash.display.MovieClip;
 
 	/*
 		Represents all Non-Player Characters
@@ -25,5 +26,16 @@ package bin.actors
 		{
 			mover.spawn(x, y, args);
 		}
+
+		public function getMover():NPCMover
+		{
+			return mover;
+		}
+
+		public function getMC():MovieClip
+		{
+			return mover.getMC();
+		}
+
 	}
 }

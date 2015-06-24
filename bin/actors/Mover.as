@@ -208,7 +208,10 @@
 			this.locX = locX;
 		}
 
-		
+		public function getMC():MovieClip
+		{
+			return mc;
+		}		
 
 
 	}
