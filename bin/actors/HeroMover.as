@@ -2,6 +2,7 @@
 {
 	import bin.*;
 	import flash.events.KeyboardEvent;
+	import flash.events.Event;
 	import flash.utils.setTimeout;
 
 
@@ -37,12 +38,35 @@
 		}
 
 		/*
+			handles sending messages to mover class when direction is pressed
+		*/
+		private function heroEnterFrameHandler(e:Event):void
+		{
+			if(activeDirection["up"] == true)
+			{
+				initMove(0);
+			}
+			else if(activeDirection["down"] == true)
+			{
+				initMove(2);
+			}
+			else if(activeDirection["left"] == true)
+			{
+				initMove(3);
+			}
+			else if(activeDirection["right"] == true)
+			{
+				initMove(1);
+			}
+		}
+
+		/*
 			set up user controls
 		*/
 		public function initiateFreeRoamControls():void
 		{
 			CoreAccessor.getMain().stage.addEventListener(KeyboardEvent.KEY_DOWN, keyPressDownEvent);
-			CoreAccessor.getMain().stage.addEventListener(KeyboardEvent.KEY_DOWN, keyPressUpEvent);
+			CoreAccessor.getMain().stage.addEventListener(KeyboardEvent.KEY_UP, keyPressUpEvent);
 		}
 
 		/*
@@ -51,7 +75,7 @@
 		public function haltFreeRoamControls():void
 		{
 			CoreAccessor.getMain().stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyPressDownEvent);
-			CoreAccessor.getMain().stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyPressUpEvent);
+			CoreAccessor.getMain().stage.removeEventListener(KeyboardEvent.KEY_UP, keyPressUpEvent);
 		}
 
 		/*
@@ -63,18 +87,22 @@
 
 			if(keyPressed == controls["up"])
 			{
+				mc.removeEventListener(Event.ENTER_FRAME, heroEnterFrameHandler);
 				activeDirection["up"] = false;
 			}
 			else if(keyPressed == controls["down"])
 			{
+				mc.removeEventListener(Event.ENTER_FRAME, heroEnterFrameHandler);
 				activeDirection["down"] = false;
 			}
 			else if(keyPressed == controls["left"])
 			{
+				mc.removeEventListener(Event.ENTER_FRAME, heroEnterFrameHandler);
 				activeDirection["left"] = false;
 			}
 			else if(keyPressed == controls["right"])
 			{
+				mc.removeEventListener(Event.ENTER_FRAME, heroEnterFrameHandler);
 				activeDirection["right"] = false;
 			}
 
@@ -91,23 +119,22 @@
 
 				if(keyPressed == controls["up"])
 				{
-					initMove(0);
+					mc.addEventListener(Event.ENTER_FRAME, heroEnterFrameHandler);
 					activeDirection["up"] = true;
-
 				}
 				else if(keyPressed == controls["down"])
 				{
-					initMove(2);
+					mc.addEventListener(Event.ENTER_FRAME, heroEnterFrameHandler);
 					activeDirection["down"] = true;
 				}
 				else if(keyPressed == controls["left"])
 				{
-					initMove(3);
+					mc.addEventListener(Event.ENTER_FRAME, heroEnterFrameHandler);
 					activeDirection["left"] = true;
 				}
 				else if(keyPressed == controls["right"])
 				{
-					initMove(1);
+					mc.addEventListener(Event.ENTER_FRAME, heroEnterFrameHandler);
 					activeDirection["right"] = true;
 				}
 			}

@@ -33,13 +33,7 @@
 		{
 			if(inMove) 
 			{
-				if(movementTimer++ >= MOVEMENT_TIME_ONE_BLOCK) 
-				{
-					//setCoordinates(locNew[0], locNew[1]);
-					inMove = false;
-					movementTimer = 0;
-					return;
-				}
+				
 				if(moveDirection == 0)
 				{
 					mc.y -= movementSpeedOneBlockY;
@@ -55,6 +49,13 @@
 				else if(moveDirection == 3)
 				{
 					mc.x -= movementSpeedOneBlockX;
+				}
+				if(movementTimer++ >= MOVEMENT_TIME_ONE_BLOCK) 
+				{
+					setCoordinates(locNew[0], locNew[1]);
+					inMove = false;
+					movementTimer = 0;
+					return;
 				}
 			}
 		}
