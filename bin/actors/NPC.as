@@ -27,6 +27,14 @@ package bin.actors
 			mover.spawn(x, y, args);
 		}
 
+		/*
+			Handles destroying this npc
+		*/
+		public function deconstruct()
+		{
+			mover.deconstruct();
+		}
+
 		public function getMover():NPCMover
 		{
 			return mover;
@@ -36,6 +44,5 @@ package bin.actors
 		{
 			return mover.getMC();
 		}
-
 	}
 }

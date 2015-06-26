@@ -24,11 +24,10 @@
 			var presetZoneNumber:Number = 0;
 			zone = (ZoneFactory.getZone(presetZoneNumber));
 			zone.load();
-			zone.addHero(hero, 2, 2);
+			zone.addHero(hero, 2, 4);
 
 
 		}
-
 
 		/*
 			Transition between zones

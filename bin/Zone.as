@@ -52,7 +52,26 @@ package bin
 		}
 
 		/*
-			A unit requests a move, if it can move it return true, otherwise return false
+			An npc has requested a move
+		*/
+		public function moveNPC(xSquare:Number, ySquare:Number, oldXSquare:Number, oldYSquare:Number):Boolean
+		{
+			var npc:NPC = charLocation[oldXSquare][oldYSquare];
+
+			if(isOutOfBoundsTile(xSquare, ySquare) && collidableTile(xSquare, ySquare))
+			{
+				charLocation[ySquare][xSquare] = npc;
+				charLocation[oldYSquare][oldXSquare] = null;
+				return true;
+			}
+
+
+			return false;
+		}
+
+
+		/*
+			The hero requests a move, if it can move it return true, otherwise return false
 			if the player hits a 'next zone tile' we proceed to the next zone
 		*/
 		public function moveHero(hero:Hero, xSquare:Number, ySquare:Number):Boolean
@@ -65,12 +84,27 @@ package bin
 			}
 			else if(collidableTile(xSquare, ySquare))
 			{
-				charLocation[xSquare][ySquare] = hero;
-				charLocation[oldX][oldY] = null;
+				charLocation[ySquare][xSquare] = hero;
+				charLocation[oldY][oldX] = null;
 				return true;
 			}
 
 			return false;
+		}
+
+		/*
+			CHecks to see if the tile is out of bounds AKA greater/lesser then width/height 
+			returns true if outofbounds false otherwise
+		*/
+		public function isOutOfBoundsTile(xSquare:Number, ySquare:Number):Boolean
+		{
+			if(xSquare < 0 || xSquare > charLocation[0].length || 
+				ySquare < 0 || ySquare > charLocation.length)
+			{
+				return false;
+			}
+
+			return true;
 		}
 
 		/*
@@ -105,6 +139,7 @@ package bin
 		public function addHero(hero:Hero, xSquare:Number, ySquare:Number):void
 		{
 			charLocation[xSquare][ySquare] = hero;
+
 			hero.spawn(xSquare, ySquare);
 			CoreAccessor.getMain().setChildIndex(hero.getMC(), CoreAccessor.getMain().numChildren-1);
 		}
@@ -114,10 +149,9 @@ package bin
 		*/
 		public function moveHeroTo(hero:Hero, xSquare:Number, ySquare:Number):void
 		{
-			charLocation[xSquare][ySquare] = hero;
+			charLocation[ySquare][xSquare] = hero;
 			hero.setCoordinates(xSquare, ySquare);
 			CoreAccessor.getMain().setChildIndex(hero.getMC(), CoreAccessor.getMain().numChildren-1);
-
 		}
 
 		/*
@@ -127,21 +161,22 @@ package bin
 		{
 			//clear current tiles
 			var main:MovieClip = CoreAccessor.getMain();
-			for(i = 0; i < Constants.NUMBER_OF_TILES_X; i++)
+			for(var y:Number = 0; y < Constants.NUMBER_OF_TILES_Y; y++)
 			{
-				for(j = 0; j < Constants.NUMBER_OF_TILES_Y; j++)
+				for(var _x:Number = 0; _x < Constants.NUMBER_OF_TILES_X; _x++)
 				{
 					//remove visual
-					main.removeChild(visuLocation[j][i]);
+					main.removeChild(visuLocation[y][_x]);
 
 					//remove characters
-					if(charLocation[i][j] != null)
+					if(charLocation[y][_x] != null)
 					{
-						if(charLocation[i][j] is NPC)
+						if(charLocation[y][_x] is NPC)
 						{
-							main.removeChild(charLocation[i][j].getMover().getMC());
+							charLocation[y][_x].deconstruct();
+							main.removeChild(charLocation[y][_x].getMover().getMC());
 						}
-						else if(charLocation[i][j] is Hero)
+						else if(charLocation[y][_x] is Hero)
 						{
 							//do nothing?
 						}

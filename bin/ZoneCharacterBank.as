@@ -10,27 +10,23 @@ package bin
 	{
 
 		static const IXEL_FIELDS_ROADS_END:Array = [
-			[null,null,null,null,new NPC(Constants.CLASS_COMMONER, { "direction" : Constants.DIRECTION_DOWN }),null,null],
-			[null,null,null,null,null,null,null],
-			[null,null,null,null,null,null,null],
-			[null,null,null,null,null,null,null],
-			[null,null,null,null,null,null,null],
-			[null,null,null,null,null,null,null],
-			[null,null,null,null,null,null,null],
-			[null,null,null,null,null,null,null],
-			[null,null,null,null,null,null,null]
+			[null,null,null,null,new NPC(Constants.CLASS_COMMONER, { "direction" : Constants.DIRECTION_DOWN, "doesMove" : true }),null,null,null,null],
+			[null,null,null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null,null,null],
 		];
 
 		static const IXEL_FIELDS_PATH_0:Array = [
-			[null,null,null,null,null,null,null],
-			[null,new NPC(Constants.CLASS_COMMONER, { "direction" : Constants.DIRECTION_DOWN }),null,null,null,null,null],
-			[null,null,null,null,null,new NPC(Constants.CLASS_COMMONER, { "direction" : Constants.DIRECTION_LEFT }),null],
-			[null,null,null,null,null,null,null],
-			[null,null,null,null,null,null,null],
-			[null,null,null,null,null,null,null],
-			[null,null,null,null,null,null,null],
-			[null,null,null,null,null,null,null],
-			[null,null,null,null,null,null,null]
+			[null,null,null,null,null,null,null,null,null],
+			[null,new NPC(Constants.CLASS_COMMONER, { "direction" : Constants.DIRECTION_DOWN }),null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null,new NPC(Constants.CLASS_COMMONER, { "direction" : Constants.DIRECTION_LEFT }),null],
+			[null,null,null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null,null,null],
 		];
 	}
 }
