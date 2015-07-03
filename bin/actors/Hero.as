@@ -1,6 +1,7 @@
 package bin.actors
 {
 	import bin.combat_statistics.*;
+	import bin.eco_skills.*;
 	import flash.display.MovieClip;
 
 	/*
@@ -9,6 +10,7 @@ package bin.actors
 	public class Hero
 	{
 		private var battleStatistic:BattleStatistic;
+		private var economyStatistic:EconomyStatistic;
 		private var mover:HeroMover;
 
 		public function Hero(classType:Number)
