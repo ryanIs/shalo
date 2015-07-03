@@ -1,4 +1,4 @@
-package bin
+﻿package bin
 {
 	/*
 		Housing for immutable data
@@ -17,6 +17,7 @@ package bin
 		//classes/model number
 		public static const CLASS_FIGHTER:Number = 0;
 		public static const CLASS_COMMONER:Number = 1;
+		public static const CLASS_SHOPKEEPER:Number = 2;
 
 		//directions
 		public static const DIRECTION_UP:Number = 0;

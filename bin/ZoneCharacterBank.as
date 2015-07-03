@@ -1,4 +1,4 @@
-package bin
+﻿package bin
 {
 	import bin.actors.*;
 
@@ -12,6 +12,18 @@ package bin
 		static const IXEL_FIELDS_ROADS_END:Array = [
 			[null,null,null,null,new NPC(Constants.CLASS_COMMONER, { "direction" : Constants.DIRECTION_DOWN }),null,null],
 			[null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null],
+			[null,null,null,null,null,null,null]
+		];
+		
+		static const IXEL_FIELDS_ORE_SHOP:Array = [
+			[null,null,null,null,null,null,null],
+			[null,null,null,new NPC(Constants.CLASS_COMMONER, { "direction" : Constants.DIRECTION_DOWN }),null,null,null],
 			[null,null,null,null,null,null,null],
 			[null,null,null,null,null,null,null],
 			[null,null,null,null,null,null,null],

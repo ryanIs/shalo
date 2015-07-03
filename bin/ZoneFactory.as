@@ -111,6 +111,11 @@
 					visuLocation = ZoneVisualBank.IXEL_FIELDS_PATH_0;
 					charLocation = [];
 				break;
+				case 2:
+					zoneTitle = "Ixel Fields Ore Shop";
+					visuLocation = ZoneVisualBank.IXEL_FIELDS_PATH_0;
+					charLocation = [];
+				break;
 
 
 				/*

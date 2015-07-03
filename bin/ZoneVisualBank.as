@@ -1,4 +1,4 @@
-package bin
+﻿package bin
 {
 
 	import flash.display.MovieClip;
@@ -26,6 +26,16 @@ package bin
 			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
 			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
 			[new SimpleFenceUpDown(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(), new SimpleGrass(),new SimpleFenceUpDown()],
+		];
+		
+		static const IXEL_FIELDS_ORE_SHOP:Array = [
+			[new SimpleWoodWall(), new SimpleWoodWall(), new SimpleWoodWall(), new SimpleWoodWall(), new SimpleWoodWall(), new SimpleWoodWall(), new SimpleWoodWall(), new SimpleWoodWall(),new SimpleWoodWall()],
+			[new SimpleWoodWall(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(),new SimpleWoodWall()],
+			[new SimpleWoodWall(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(),new SimpleWoodWall()],
+			[new SimpleWoodWall(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(),new SimpleWoodWall()],
+			[new SimpleWoodWall(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(),new SimpleWoodWall()],
+			[new SimpleWoodWall(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(), new SimpleWoodFloor(),new SimpleWoodWall()],
+			[new SimpleWoodWall(), new SimpleWoodWall(), new SimpleWoodWall(), new SimpleWoodWall(), new SimpleWoodFloor(), new SimpleWoodWall(), new SimpleWoodWall(), new SimpleWoodWall(),new SimpleWoodWall()],
 		];
 	
 	}

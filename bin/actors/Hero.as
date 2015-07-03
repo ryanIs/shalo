@@ -1,5 +1,6 @@
-package bin.actors
+﻿package bin.actors
 {
+	import bin.*;
 	import bin.combat_statistics.*;
 
 	/*

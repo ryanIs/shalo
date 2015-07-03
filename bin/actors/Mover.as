@@ -16,6 +16,8 @@
 
 		protected var frozen:Boolean = false;
 
+		public var talkCommand:Number = -1;
+		public var talkingWith:Humanoid;
 		protected var MOVEMENT_TIME_ONE_BLOCK:Number = 10; // FPS = 30
 		protected var tileWidth:Number = Math.floor(CoreAccessor.getMain().stage.stageWidth / Constants.NUMBER_OF_TILES_X);
 		protected var tileHeight:Number = (CoreAccessor.getMain().stage.stageHeight / Constants.NUMBER_OF_TILES_Y);
@@ -29,6 +31,15 @@
 			mc.addEventListener(Event.ENTER_FRAME, enterFrameHandler);
 		}
 
+		public function setTalkCommand(_cmd:Number):void {
+			//talkCommand = InteractionFactory.getInteraction(_cmd);
+			talkCommand = _cmd;
+			return;
+		}
+		public function setTalkingWith(_hum:Humanoid):void {
+			talkingWith = _hum;
+			return;
+		}
 		private function enterFrameHandler(e:Event)
 		{
 			if(inMove) 
@@ -117,13 +128,22 @@
 		*/
 		private function determineModel(modelNumber:Number):void
 		{
+				mc = new Humanoid();
 			switch(modelNumber)
 			{
 				case Constants.CLASS_FIGHTER:
-					mc = new FighterClassVisual();
+					//mc = new FighterClassVisual();
+					 mc.initHumanoid("hero", this);
 				break;
 				case Constants.CLASS_COMMONER:
-					mc = new CommonerClassVisual();
+					//mc = new CommonerClassVisual();
+					 mc.initHumanoid("commoner", this);
+				break;
+				case Constants.CLASS_SHOPKEEPER:
+					//mc = new CommonerClassVisual();
+					 mc.initHumanoid("shopKeeper", this);
+				break;
+				default:
 				break;
 			}
 		} 

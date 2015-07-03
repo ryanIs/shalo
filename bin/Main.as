@@ -10,7 +10,12 @@
 		private const DEBUG:Boolean = true;
 		private var debugFrame:String = "game";
 		
+		// GAME VARS
+		public var dialogue:Array = new Array();
+		public var dialogueIndex:Number = -1;
+		public var talkingWith:Humanoid = null;
 		public var transition_frame:String = "load";
+		private var campaignDriver:CampaignDriver;
 
 		public function Main()
 		{
@@ -24,6 +29,50 @@
 				gotoAndPlay(2);
 			}
 		}
+		public function startDialogue(_dialogue:Array, _talkingWith:Humanoid):void 
+		{
+			dialogue = _dialogue;
+			talkingWith = _talkingWith;
+			if(campaignDriver.getHero() != null && _talkingWith != null)
+			campaignDriver.getHero().getMover().setTalkingWith(_talkingWith);
+			
+			processDialogue(0);
+			return;
+		}
+		public function processDialogue(_set:Number):void 
+		{
+			dialogueIndex = _set;
+			if(dialogueIndex >= dialogue.length || dialogueIndex == -1)
+			{
+				endDialogue();
+			} 
+			else
+			{
+				interface_mc.dialogue_mc.visible = true;
+				interface_mc.dialogue_mc.name_txt.text = dialogue[dialogueIndex].npcName;
+				interface_mc.dialogue_mc.dialogue_txt.text = dialogue[dialogueIndex].npcDialogue;
+				interface_mc.dialogue_mc.buttons_mc.gotoAndStop(dialogue[dialogueIndex].npcDialogueOptions);
+				for(var i:Number = 0; i < dialogue[dialogueIndex].npcDialogueOptions; i++) {
+					var _f:Function = function(e:MouseEvent):void
+					{
+						processDialogue(dialogue[dialogueIndex].npcDialogueGoto);
+						interface_mc.dialogue_mc.buttons_mc[e.currentTarget.name].removeEventListener(MouseEvent.CLICK, _f);
+						return;
+					}; 
+					interface_mc.dialogue_mc.buttons_mc["b" + i + "_btn"].addEventListener(MouseEvent.CLICK, _f); 
+					interface_mc.dialogue_mc.buttons_mc["b" + i + "_txt"].text = dialogue[dialogueIndex].npcDialogueOptionNames[i];
+				}
+			}
+			return;
+		}
+		public function endDialogue():void
+		{
+			interface_mc.dialogue_mc.visible = false;
+			campaignDriver.getHero().getMover().setTalkingWith(null);
+			if(talkingWith != null)
+			talkingWith.getMover().setTalkingWith(null);
+			return;
+		}
 		public function loadFrame():void {
 			if(currentLabel == "debugLoad") {
 				if(DEBUG) {
@@ -31,6 +80,8 @@
 					setDriver(Constants.CAMPAIGN_MODE);
 					CoreAccessor.getDriver().run();
 				}
+			} else if(currentLabel == "game") {
+				interface_mc.dialogue_mc.visible = false;
 			}
 			return;
 		}
@@ -67,7 +118,7 @@
 			switch(driver)
 			{
 				case Constants.CAMPAIGN_MODE:
-					CoreAccessor.setDriver(new CampaignDriver());
+					CoreAccessor.setDriver(campaignDriver = new CampaignDriver());
 				break;
 				/*
 				case Conastants.ONLINE_MODE:
