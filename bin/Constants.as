@@ -28,5 +28,7 @@
 
 		//non-collidable tiles
 		public static const NON_COLLIDABLE_TILES:Array = [SimpleRock, SimpleFenceUpRight, SimpleFenceUpDown, SimpleFenceLeftRight];
+	
+		public static const NPC_MOVEMENT_MEDIUM:Number = 4000;
 	}
 }

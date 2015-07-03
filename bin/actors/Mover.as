@@ -72,55 +72,11 @@
 		}
 
 		/*
-			Initiate character movement
+			Movement method to be overridden by child mover classes (NPCMover/HeroMover...etc)
 		*/
-		protected function initMove(_direction:Number):void 
+		protected function initMove(_direction:Number):void
 		{
-			var tempX:Number;
-			var tempY:Number;
-			if(_direction == 0)
-			{
-				tempY = locY - 1;
-				tempX = locX;	
-			} 
-			else if(_direction == 1)
-			{ 
-				tempX = locX + 1; 
-				tempY = locY;
-			}
-			else if(_direction == 2)
-			{ 
-				tempY = locY + 1; 
-				tempX = locX;
-			}
-			else if(_direction == 3)
-			{ 
-				tempX = locX - 1; 
-				tempY = locY;
-			}
 
-			var campaignDriver:CampaignDriver = CoreAccessor.getDriver() as CampaignDriver;
-
-			if(!inMove) 
-			{
-				if(campaignDriver.getZone().moveHero(
-						campaignDriver.getHero(),
-						tempX, 
-						tempY
-					))
-				{
-					locNew = [locX, locY];
-					moveDirection = _direction;
-					inMove = true;
-					mc.rotation = 90 * _direction;
-					inMove = true;
-					if(_direction == 0) locNew[1] = locY - 1;
-					else if(_direction == 1) locNew[0] = locX + 1;
-					else if(_direction == 2) locNew[1] = locY + 1;
-					else if(_direction == 3) locNew[0] = locX - 1;
-				}
-			}
-			return;
 		}
 
 		/*
@@ -228,7 +184,10 @@
 			this.locX = locX;
 		}
 
-		
+		public function getMC():MovieClip
+		{
+			return mc;
+		}		
 
 
 	}

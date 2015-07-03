@@ -2,6 +2,8 @@
 {
 	import bin.*;
 	import bin.combat_statistics.*;
+	import bin.eco_skills.*;
+	import flash.display.MovieClip;
 
 	/*
 		Represents the user class that will be controlled
@@ -9,6 +11,7 @@
 	public class Hero
 	{
 		private var battleStatistic:BattleStatistic;
+		private var economyStatistic:EconomyStatistic;
 		private var mover:HeroMover;
 
 		public function Hero(classType:Number)
@@ -25,10 +28,22 @@
 			mover.spawn(x, y);
 		}
 
+		/*
+			Move hero to this location
+		*/
+		public function setCoordinates(xSquare:Number, ySquare:Number):void
+		{
+			mover.setCoordinates(xSquare, ySquare);
+		}
 
 		public function getMover():HeroMover
 		{
 			return mover;
+		}
+
+		public function getMC():MovieClip
+		{
+			return mover.getMC();
 		}
 
 	}
