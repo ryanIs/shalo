@@ -19,14 +19,39 @@
 		*/	
 		override public function run()
 		{
+
+			hero = new Hero(Constants.CLASS_FIGHTER);
 			var presetZoneNumber:Number = 0;
 			zone = (ZoneFactory.getZone(presetZoneNumber));
 			zone.load();
-
-			hero = new Hero(Constants.CLASS_FIGHTER);
-			hero.spawn(4, 4);
+			zone.addHero(hero, 2, 4);
 
 
+		}
+
+		/*
+			Transition between zones
+		*/
+		public function zoneTransition(nextZoneIdentificationNumber:Number, heroLocation:Array):void
+		{
+			zone.clear();
+
+			zone = ZoneFactory.getZone(nextZoneIdentificationNumber);
+			
+			zone.load();
+
+			zone.moveHeroTo(hero, heroLocation[0], heroLocation[1]);
+		}
+
+
+		public function getZone():Zone
+		{
+			return zone;
+		}
+
+		public function getHero():Hero
+		{
+			return hero;
 		}
 
 
