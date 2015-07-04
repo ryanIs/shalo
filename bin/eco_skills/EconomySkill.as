@@ -1,6 +1,5 @@
 package bin.eco_skills
 {
-
 	/*
 		Type ambigious economy skill representation
 	*/
@@ -91,6 +90,11 @@ package bin.eco_skills
 		public function setMaxExp(maxExpDots:Number):void
 		{
 			this.maxExpDots = maxExpDots;
+		}
+
+		public function toString():String
+		{
+			return "(level : " + level + ")\n" + "(exp: " + expDots + ")\n" + "(maxExp : " + maxExpDots + ")";
 		}
 
 	}

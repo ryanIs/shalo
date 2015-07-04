@@ -7,10 +7,7 @@
 		protected var itemStackable:Boolean = true;
 		protected var itemShopRefillTime:Number;
 		public var itemShopRefillTimer:Number = 0;
-		public function Item(_itemName) 
-		{
-			itemName = _itemName;
-		}
+		public function Item(){}
 		public function getItemTag():String 
 		{
 			return itemTag;

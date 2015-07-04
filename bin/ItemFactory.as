@@ -1,16 +1,17 @@
-﻿package bin
+package bin
 {
+	import bin.eco_skills.*;
 	public class ItemFactory
 	{
-		private const FPS:Number = 30.00;
+		private static const FPS:Number = 30.00;
 		private var itemID:Number;
 		private var itemStackable:Boolean = true;
 		public function ItemFactory() {}
 		public static function getItemData(_itemID:Number):Item
 		{
-			var _returnItem:Item;
+			var _returnItem:Item = new Item();
 			_returnItem.setItemID(_itemID);
-			_returnItem.setStackable(false);
+			_returnItem.setItemStackable(false);
 			switch(_itemID)
 			{
 				case 0:
@@ -45,9 +46,24 @@
 					_returnItem.setItemTag("franciumOre");
 					_returnItem.setShopRefillTime(FPS * 30);
 				break;
+				case 8:
+					_returnItem = new Obtainable();
+					_returnItem.setItemStackable(true);
+					_returnItem.setItemTag("carp");
+					(_returnItem as Obtainable).setDifficulty(1);
+					(_returnItem as Obtainable).setMaxLevelForExp(20);
+					(_returnItem as Obtainable).setExpGiven(1);
+				break;
+				case 9:
+					_returnItem = new EconomyEquipment();
+					_returnItem.setItemTag("wooden rod");
+					(_returnItem as EconomyEquipment).setPotency(0);
+				break;
 				default:
 				break;
 			}
+
+			return _returnItem;
 		}
 	}
 }
