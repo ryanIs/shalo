@@ -70,7 +70,7 @@ package bin.combat_statistics
 			return temporaryDebuffAdditive.pop();
 		}
 		
-		public function addToEquipmentAdditive(equpiment:Additive):void
+		public function addToEquipmentAdditive(equipment:Additive):void
 		{
 			equipmentAdditive.push(equipment); // Add equipment element to array
 		}
@@ -94,17 +94,23 @@ package bin.combat_statistics
 			passiveAdditive.push(passive);
 		}
 
+		/*
+			removes a passive additive by name and returns it
+		*/
 		public function removeFromPassiveAdditive(name:String):Additive
 		{
+			var tempAdditive:Additive = null;
 			for (var i:Number = 0; i < passiveAdditive.length; i++)
 			{
 				if (passiveAdditive[i].getName() == name)
 				{
-					var tempAdditive:Additive = passiveAdditive[i];
+					tempAdditive = passiveAdditive[i];
 					passiveAdditive[i] = passiveAdditive[passiveAdditive.length - 1];
 					passiveAdditive[passiveAdditive.length - 1] = tempAdditive;
+					return tempAdditive;
 				}
 			}
+			return tempAdditive;
 		}
 	}
 }

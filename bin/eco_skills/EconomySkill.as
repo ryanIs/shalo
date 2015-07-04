@@ -6,8 +6,8 @@ package bin.eco_skills
 	public class EconomySkill
 	{
 		private var name:String = new String();
-		private var expDots:Number = 0;
-		private var maxExpDots:Number = 3;
+		private var exp:Number = 0;
+		private var maxExp:Number = 3;
 		private var level:Number = 1;
 		private var levelUpFunc:Function;
 
@@ -17,11 +17,11 @@ package bin.eco_skills
 			levelUpFunc = ESkillLevelingFactory.get(name);
 		}
 
-		public function setDefaults(name:String, expDots:Number, maxExpDots:Number, level:Number):void
+		public function setDefaults(name:String, exp:Number, maxExp:Number, level:Number):void
 		{
 			this.name = name;
-			this.expDots = expDots;
-			this.maxExpDots = maxExpDots;
+			this.exp = exp;
+			this.maxExp = maxExp;
 			this.level = level;
 			levelUpFunc = ESkillLevelingFactory.get(name);
 		}
@@ -31,20 +31,20 @@ package bin.eco_skills
 		*/
 		public function gainExp(expGain:Number):Boolean
 		{
-			expDots += expGain;
-			if(expDots >= maxExpDots)
+			exp += expGain;
+			if(exp >= maxExp)
 			{
 				//if we are leveling more than once
-				if(expDots / maxExpDots > 1)
+				if(exp / maxExp > 1)
 				{
-					var numberOfLevelUps:Number = Math.floor(expDots / maxExpDots);
+					var numberOfLevelUps:Number = Math.floor(exp / maxExp);
 					for(var i:Number = 0; i < numberOfLevelUps; i++)
 					{
-						expDots -= maxExpDots;
+						exp -= maxExp;
 						levelUp();
 					}
 				}
-				expDots -= maxExpDots;
+				exp -= maxExp;
 				levelUp();
 				return true;
 			}
@@ -57,8 +57,8 @@ package bin.eco_skills
 		*/
 		public function levelUp():void
 		{
-			var results:Object = levelUpFunc(maxExpDots, level);
-			maxExpDots = results["maxExpDots"];
+			var results:Object = levelUpFunc(maxExp, level);
+			maxExp = results["maxExp"];
 			level = results["level"];
 		}
 
@@ -74,27 +74,27 @@ package bin.eco_skills
 
 		public function getExp():Number
 		{
-			return expDots;
+			return exp;
 		}
 		
-		public function setExp(expDots:Number):void
+		public function setExp(exp:Number):void
 		{
-			this.expDots = expDots;
+			this.exp = exp;
 		}
 
 		public function getMaxExp():Number
 		{
-			return maxExpDots;
+			return maxExp;
 		}
 		
-		public function setMaxExp(maxExpDots:Number):void
+		public function setMaxExp(maxExp:Number):void
 		{
-			this.maxExpDots = maxExpDots;
+			this.maxExp = maxExp;
 		}
 
 		public function toString():String
 		{
-			return "(level : " + level + ")\n" + "(exp: " + expDots + ")\n" + "(maxExp : " + maxExpDots + ")";
+			return "(level : " + level + ")\n" + "(exp: " + exp + ")\n" + "(maxExp : " + maxExp + ")";
 		}
 
 	}

@@ -9,7 +9,7 @@ package bin.actors
 	*/
 	public class Hero
 	{
-		private var battleStatistic:BattleStatistic;
+		private var battleStatistic:HeroBattleStatistic;
 		private var economyStatistic:EconomyStatistic;
 		private var mover:HeroMover;
 
@@ -18,7 +18,7 @@ package bin.actors
 		public function Hero(classType:Number)
 		{
 			mover = new HeroMover(classType);
-			battleStatistic = new BattleStatistic(classType);
+			battleStatistic = new HeroBattleStatistic(classType);
 			economyStatistic = new EconomyStatistic();
 		}
 
