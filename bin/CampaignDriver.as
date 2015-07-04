@@ -13,7 +13,6 @@
 		private var hero:Hero;
 
 		public function CampaignDriver(){}
-
 		/*
 			The initializer function for initializing the campaign  mode
 		*/	
